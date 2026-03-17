@@ -1,6 +1,6 @@
-import admin.Admin;
-import db.adminDB;
-import borrower.Borrower;
+import admin.*;
+import db.*;
+import borrower.*;
 import java.util.*;
 public class Main{
     static Scanner sc = new Scanner(System.in);
@@ -24,7 +24,7 @@ public class Main{
             if(op==1){
                 System.out.println("Enter Admin Email ID: ");
                 String email = sc.nextLine();
-                System.out.println("Enter Admin Email ID: ");
+                System.out.println("Enter Admin Password: ");
                 String pass = sc.nextLine();
                 if(adminDB.adminInfo.containsKey(email) && adminDB.adminInfo.get(email).equals(pass))
                 a.adminMain(adminDB.adminName.get(email));
