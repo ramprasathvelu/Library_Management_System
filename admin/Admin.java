@@ -4,6 +4,8 @@ import java.util.*;
 public class Admin {
     static Scanner sc = new Scanner(System.in);
     public void adminMain(String name){
+        borrowerDB b = new borrowerDB();
+        adminDB a = new adminDb(); 
         System.out.println("------------------Admin------------------");  
         while (true) { 
             System.out.println("\t \t Welcome "+name+" \t \t");
@@ -18,6 +20,7 @@ public class Admin {
             int op;
             try {
                 op = sc.nextInt();
+                sc.nextLine();
             } 
             catch (Exception e) {
                 System.out.println("Invalid, Exception occured:"+e);
@@ -39,7 +42,7 @@ public class Admin {
                 System.out.println("Book added successfully!");
             }
             else if(op==3){
-                int s;
+                int s=-1;
                 System.out.println("1. Search By Name");
                 System.out.println("2. Search By ISBN");
                 try {
@@ -49,11 +52,16 @@ public class Admin {
                 }
                 if(s==1){
                     System.out.println("Enter the Name of the Book");
-                    bookDB.searchByISBN(sc.nextLine());
+                    book result = bookDB.searchByName(sc.nextLine());
+                    if(result != null) result.display();
+                    else System.out.println("Book not found!");
                 }
                 else if(s==2){
                     System.out.println("Enter the ISBN No of the Book");
-                    bookDB.searchByName(sc.nextLine());
+                    book res = bookDB.searchByISBN(sc.nextLine());
+                    if(res!=null) res.display();
+                    else System.out.println("Book not found!");
+
                 }
                 else{
                     System.out.println("Invalid Option");
@@ -67,8 +75,7 @@ public class Admin {
                 String password = sc.nextLine();
                 System.out.println("Enter New Admin Name: ");
                 String userName = sc.nextLine();
-                adminDB.addAdmin(email, password, userName);
-
+                a.addAdmin(email, password, userName);
             }
             else if(op==5){
                 System.out.println("---------------New Student---------------");
@@ -78,7 +85,7 @@ public class Admin {
                 String password = sc.nextLine();
                 System.out.println("Enter New Student Name: ");
                 String userName = sc.nextLine();
-                adminDB.addAdmin(email, password, userName);
+                b.addBorrower(email, password, userName);
             }
             else if(op==6){
                 System.out.println("progress");

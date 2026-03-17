@@ -1,4 +1,5 @@
 import admin.Admin;
+import db.adminDB;
 import borrower.Borrower;
 import java.util.*;
 public class Main{
@@ -14,6 +15,7 @@ public class Main{
             int op;
             try {
                 op = sc.nextInt();
+                sc.nextLine();
             } 
             catch (Exception e) {
                 System.out.println("Exception: "+e);

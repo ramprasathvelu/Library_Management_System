@@ -1,9 +1,9 @@
 package db;
 
 public class book{
-    String bookName;
-    String isbn;
-    int quantity;
+    public String bookName;
+    public String isbn;
+    public int quantity;
 
     public book(String bookName, String isbn, int quantity){
         this.bookName = bookName;

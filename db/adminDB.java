@@ -7,7 +7,7 @@ public class adminDB {
         adminInfo.put("velu@gmail.com","velu007");
         adminName.put("velu@gmail.com","VELU");
     }
-    public static void addAdmin(String email, String pass, String name){
+    public void addAdmin(String email, String pass, String name){
         adminInfo.put(email,pass);
         adminName.put(email,name);
     }
