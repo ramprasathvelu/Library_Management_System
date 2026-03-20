@@ -1,6 +1,6 @@
 import admin.*;
-import db.*;
 import borrower.*;
+import db.*;
 import java.util.*;
 public class Main{
     static Scanner sc = new Scanner(System.in);
@@ -12,6 +12,7 @@ public class Main{
             System.out.println("1. Admin"); 
             System.out.println("2. Borrower"); 
             System.out.println("3. Exit"); 
+            System.out.print("Enter the Number :"); 
             int op;
             try {
                 op = sc.nextInt();
@@ -28,9 +29,17 @@ public class Main{
                 String pass = sc.nextLine();
                 if(adminDB.adminInfo.containsKey(email) && adminDB.adminInfo.get(email).equals(pass))
                 a.adminMain(adminDB.adminName.get(email));
+                else System.out.println("Invalid Credentials!");
             }
             else if (op==2) {
-                b.borrowerMain();
+                System.out.println("Enter Borrower Email ID: ");
+                String email = sc.nextLine();
+                System.out.println("Enter Password: ");
+                String pass = sc.nextLine();
+                if(borrowerDB.borrowerInfo.containsKey(email) && borrowerDB.borrowerInfo.get(email).equals(pass))
+                b.borrowerMain(borrowerDB.borrowerName.get(email));
+                else
+                System.out.println("Invalid Credentials!");
             }
             else if (op==3) {
                 System.out.println("----------------Thank You!----------------");

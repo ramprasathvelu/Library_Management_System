@@ -5,7 +5,7 @@ public class Admin {
     static Scanner sc = new Scanner(System.in);
     public void adminMain(String name){
         borrowerDB b = new borrowerDB();
-        adminDB a = new adminDb(); 
+        adminDB a = new adminDB(); 
         System.out.println("------------------Admin------------------");  
         while (true) { 
             System.out.println("\t \t Welcome "+name+" \t \t");
@@ -16,7 +16,7 @@ public class Admin {
             System.out.println("5. Add New Student");
             System.out.println("6. Fine Details");
             System.out.println("7. Report");
-            System.out.println("8. Exit");
+            System.out.println("8. Logout from Admin");
             int op;
             try {
                 op = sc.nextInt();
@@ -37,8 +37,8 @@ public class Admin {
                 String inbs = sc.nextLine();
                 System.out.println("Enter the Book Quantity: ");
                 int q = sc.nextInt();
-                book b = new book(bookName,inbs,q);
-                bookDB.addBook(b);
+                book bk = new book(bookName,inbs,q);
+                bookDB.addBook(bk);
                 System.out.println("Book added successfully!");
             }
             else if(op==3){
@@ -47,8 +47,10 @@ public class Admin {
                 System.out.println("2. Search By ISBN");
                 try {
                     s = sc.nextInt();
+                    sc.nextLine();
                 } catch (Exception e) {
                     System.out.println("Exception occur "+e);
+                    continue;
                 }
                 if(s==1){
                     System.out.println("Enter the Name of the Book");
