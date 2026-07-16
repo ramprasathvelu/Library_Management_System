@@ -1,85 +1,287 @@
-Library Management System
+# 📚 Library Management System
 
-Design and Develop a Monolith Console based Library Management system by
-understanding various use cases from the Borrower and Administrator point of view.
+A **console-based monolithic Library Management System** developed to manage library operations for both **Administrators** and **Borrowers**. The system provides authentication, inventory management, book borrowing, fine management, and reporting features while following real-world library regulations.
 
-You are allowed to improvise and add more real-time use relevant cases to to each task
-if possible.
+---
 
-Module A : Authentication and Welcome menu
-Application must authenticate both Borrower and Administrator taking EmailID and
-password and display a welcome menu based on their role.
+## 📖 Project Overview
 
-Module B : Book Inventory Management
-Admin can Add a Book,Modify Book details such as Avaialble Quantity and Delete a
-Book. Admin will add other Admins and Borrowers into the System
-a) Admin can view list of all Book sorted by Name or Available Quantity
-b) Admin can search a Book by name or ISBN
-c) Admin can manage Borrowers fine limit
+This application allows:
 
-Module C : Borrowing Book
-Borrowers can view a list of all Books available, Select the Book by Name or ISBN and
-checkout . Borrower can borrow maximum of 3 books at a time
-a) Add a book into checkout cart or remove them
-b) Cannot borrow same book twice
-c) Can borrow a book only if a minimum security deposit of rupees 500 is maintained
+- Secure authentication for **Administrators** and **Borrowers**
+- Complete book inventory management
+- Book borrowing and return management
+- Security deposit and fine calculation
+- Library reports and analytics
+- Borrowing history and fine history tracking
 
-Module D : Fine and Regulations
-Each Borrower has deposited 1500 rupees Initially into the Book Bank as a Caution
-deposit . The Amount will be refunded on closure of account . The Amount will be
-reduced if there is any delay in return or loss of book
-1. Books borrowed more than 15days will carry fine amount of 2Rs perday and
-increases exponentially for every 10 days delay or 80% of book cost whichever is
-lowest. For Simplicity get Return date from user in DD/MM/YYYY format
-2. If book is lost then 50% of actual cost of book is considered as fine
-3. If Member ship card is lost 10 Rs is collected as fine amount
-Fine amount can either by paid by cash or reduced in security deposit
-Regulations:
-a) Borrower can extend the tenure up to two times only consecutively for a book.
-b) All three book that can be borrowed parallelly must be different
-c) Borrowers can either extend the tenure, exchange the book, Inform card lost or mark
-a book as lost during every transaction
+---
 
-Module E : Reports
-Admin can view below reports
-1. Books with less quantity so that they can refill
-2. Books that are not borrowed so far by any students
-3. Books thats heavily borrowed so that they can check the condition of book
-4. Students who has outstanding not returned book as on given date
-5. Status of current book searched by ISBN number , display the details of student
-who borred that book and when it can be expected to be returned in rack
-Students can view:
-1. List of previous fines (if any) and its reason
-2. List of previous books borrow
+## 🚀 Features
 
+### 🔐 Module A - Authentication
 
+- Login using **Email ID** and **Password**
+- Role-based authentication
+  - Administrator
+  - Borrower
+- Display role-specific dashboard after successful login
 
+---
 
-Library Management
+### 📚 Module B - Book Inventory Management (Administrator)
 
-admin:
--add book (name,isbn,quantity,borrow count)
--modify book details (quantity)
--delete book
--add admin, borrower
--view list of all book (sort by name, quantity)
--search book (by name, isbn) AND status whether it is borrowed, details of student, when would he return
--manages fine limit
--view book with less quantity(ascending order)
--books not borrowed by students AND books borrowed heavily
--students who didn't returned book on given date
+#### Book Management
 
-borrower:
--view all books
--view previous fines and its reason
--view previous borrows
--select book (by name,isbn) - borrow max 3
--adding in checkout cart or remove, cannot add same book, min sec dep 500
+- Add a new book
+- Modify book details
+  - Available quantity
+- Delete a book
 
-fine:
--1500 dep in account creation, refund on closure
--limit 15 days, more than that (rs 2 per day and exponential for every 10 days OR 80% of book cost) - min
--book lost - 50% book cost fine
--membership card lost, 10 rs fine
--paid in cash, sec dep
--borrower extend tenure upto 2 consec times
+#### User Management
+
+- Add new Administrator
+- Add new Borrower
+
+#### Book Search & Listing
+
+- View all books
+- Sort books by
+  - Name
+  - Available Quantity
+- Search books by
+  - Book Name
+  - ISBN
+
+#### Fine Management
+
+- Manage borrower fine limits
+
+---
+
+### 📕 Module C - Borrowing Management (Borrower)
+
+Borrowers can:
+
+- View all available books
+- Search books using
+  - Name
+  - ISBN
+- Add books to checkout cart
+- Remove books from checkout cart
+- Checkout books
+
+#### Borrowing Rules
+
+- Maximum **3 books** can be borrowed simultaneously.
+- Same book cannot be borrowed twice.
+- Minimum **₹500 security deposit** must remain after transactions.
+- All borrowed books must be different.
+
+---
+
+### 💰 Module D - Fine Management & Regulations
+
+## Security Deposit
+
+- Every borrower deposits **₹1500** during account creation.
+- Deposit is refundable when the account is closed.
+- Deposit is reduced if fines are unpaid.
+
+### Fine Rules
+
+#### Late Return
+
+- First **15 days**: No fine.
+- After 15 days:
+  - ₹2 per day.
+  - Fine increases exponentially for every additional 10-day delay.
+  - Maximum fine is **80% of the book cost** (whichever is lower).
+
+> Return date is entered by the user in **DD/MM/YYYY** format.
+
+#### Lost Book
+
+- Fine = **50% of the actual book price**
+
+#### Lost Membership Card
+
+- Flat fine of **₹10**
+
+#### Fine Payment
+
+Fine can be paid by:
+
+- Cash
+- Deducting from Security Deposit
+
+---
+
+## Borrowing Regulations
+
+A borrower can:
+
+- Extend borrowing period **up to 2 consecutive times**
+- Exchange a borrowed book
+- Report membership card as lost
+- Report a borrowed book as lost
+
+---
+
+### 📊 Module E - Reports
+
+### Administrator Reports
+
+- Books with low available quantity
+- Books never borrowed
+- Frequently borrowed books
+- Students with overdue books on a given date
+- Book status using ISBN including:
+  - Borrower details
+  - Expected return date
+
+### Borrower Reports
+
+- Previous borrowed books
+- Previous fines with reasons
+
+---
+
+# 🧩 Functional Requirements
+
+## Administrator
+
+### Book Management
+
+- Add Book
+- Modify Book Quantity
+- Delete Book
+
+### User Management
+
+- Add Administrator
+- Add Borrower
+
+### Inventory
+
+- View all books
+- Sort books by:
+  - Name
+  - Quantity
+- Search books by:
+  - Name
+  - ISBN
+
+### Reports
+
+- Low stock books
+- Books never borrowed
+- Frequently borrowed books
+- Overdue borrowers
+- Book borrowing status
+
+### Fine Management
+
+- Manage borrower fine limits
+
+---
+
+## Borrower
+
+### Book Operations
+
+- View available books
+- Search books
+- Add to checkout cart
+- Remove from checkout cart
+- Borrow books
+
+### History
+
+- View borrowing history
+- View fine history with reasons
+
+### Regulations
+
+- Maximum 3 borrowed books
+- Cannot borrow duplicate books
+- Maintain minimum ₹500 security deposit
+- Extend borrowing period (maximum twice)
+- Exchange books
+- Report lost books
+- Report lost membership card
+
+---
+
+# 📂 Suggested Project Structure
+
+```
+LibraryManagementSystem/
+│
+├── Main.java
+├── Authentication/
+├── Models/
+│   ├── Book.java
+│   ├── Borrower.java
+│   ├── Admin.java
+│   ├── Transaction.java
+│   └── Fine.java
+│
+├── Services/
+│   ├── BookService.java
+│   ├── BorrowService.java
+│   ├── FineService.java
+│   ├── ReportService.java
+│   └── AuthenticationService.java
+│
+├── Utils/
+│   ├── DateUtil.java
+│   └── Validation.java
+│
+└── README.md
+```
+
+---
+
+# 📌 Business Rules
+
+- Initial Security Deposit: **₹1500**
+- Minimum Deposit Required: **₹500**
+- Maximum Borrow Limit: **3 books**
+- Borrow Duration: **15 days**
+- Late Fine: **₹2/day**
+- Fine increases exponentially every additional **10 days**
+- Maximum Late Fine: **80% of book price**
+- Lost Book Fine: **50% of book price**
+- Lost Card Fine: **₹10**
+- Borrow extension allowed: **2 consecutive times**
+
+---
+
+# 🛠️ Technologies
+
+- Java
+- Object-Oriented Programming (OOP)
+- Collections Framework
+- File Handling (optional)
+- Date & Time API
+- Console-Based User Interface
+
+---
+
+# 🔮 Future Enhancements
+
+- Database integration (MySQL/PostgreSQL)
+- Spring Boot REST API
+- Web-based UI
+- Email notifications
+- Barcode/QR code support
+- Online reservation system
+- Role-based authorization using JWT
+- Admin dashboard with analytics
+
+---
+
+# 📄 License
+
+This project is developed for educational purposes and can be extended into a full-fledged Library Management System.
